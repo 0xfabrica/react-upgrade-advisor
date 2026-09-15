@@ -4,15 +4,37 @@ An agent skill for upgrading React and preparing an application's source code us
 
 It guides the agent through version selection, source review, justified code adaptations, regression checks and rollback. An optional inspector distinguishes the React you declare, the version your dependencies resolve, and the renderer your framework serves.
 
-## Install
+## Install for Claude Code and Codex
 
-Install with the Skills CLI:
+Run this from the project you want to upgrade. It installs the skill for both agents:
 
 ```sh
-npx skills add 0xfabrica/react-upgrade-advisor --skill react-upgrade-advisor
+npx skills add 0xfabrica/react-upgrade-advisor --skill react-upgrade-advisor --agent claude-code codex
 ```
 
-The skill uses the [Agent Skills format](https://agentskills.io/specification). Install it for Claude Code, Codex, Cursor or another supported agent with the Skills CLI. You can also copy the complete `skills/react-upgrade-advisor` directory into your agent's supported skills location.
+For one agent, keep only `claude-code` or `codex` after `--agent`. Omit `--agent` to choose other supported agents interactively. The default installation is scoped to the project; add `--global` only if you want a personal installation across projects.
+
+Then open your agent in that project and send the matching prompt:
+
+**Claude Code**
+
+```text
+/react-upgrade-advisor Prepare this project for React 19.3. Check framework compatibility, use the version-specific documentation to adapt relevant code, and run the required checks. Explain which new APIs fit this project.
+```
+
+**Codex CLI / IDE**
+
+```text
+$react-upgrade-advisor Prepare this project for React 19.3. Check framework compatibility, use the version-specific documentation to adapt relevant code, and run the required checks. Explain which new APIs fit this project.
+```
+
+In an app interface, select the installed skill from its skill picker or mention it by name. If it is not discovered after installation, start a new agent session in the same project.
+
+The package includes standard `SKILL.md` metadata for Claude Code and `agents/openai.yaml` with a display name and suggested prompt for Codex-compatible interfaces. The CLI creates the agent-specific installation paths; no manual permission changes, custom hooks or MCP server are required. The integration was verified with Skills CLI 1.5.26 for both agent targets, including the installed helper and reference files.
+
+Sources: [Skills CLI options](https://github.com/vercel-labs/skills#install-a-skill), [Claude Code skills](https://code.claude.com/docs/en/skills), [OpenAI skill discovery and metadata](https://learn.chatgpt.com/docs/build-skills).
+
+The skill follows the [Agent Skills format](https://agentskills.io/specification). You can also copy the complete `skills/react-upgrade-advisor` directory into your agent's supported skills location. Its directory page is on [skills.sh](https://skills.sh/0xfabrica/react-upgrade-advisor/react-upgrade-advisor).
 
 The Skills CLI has its own Node requirement: version 1.5.26, used for installation verification, requires Node 22.20+. The offline inspector below supports Node 20+ independently.
 
