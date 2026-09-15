@@ -1,0 +1,4 @@
+interface:
+  display_name: "React Upgrade Advisor"
+  short_description: "React upgrades with runtime and regression evidence"
+  default_prompt: "Use $react-upgrade-advisor to assess this application's React upgrade and recommend an evidence-backed migration."

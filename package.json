@@ -1,0 +1,10 @@
+{
+  "name": "react-upgrade-advisor-skill",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Runtime-aware React upgrade guidance and an offline dependency inspector",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": { "test": "node --test" }
+}
