@@ -2,6 +2,8 @@
 
 Research snapshot: **September 15, 2026**. React and React DOM 19.3.0 were the latest stable releases, published September 9. This note is intentionally dated; recheck the [version index](https://react.dev/versions) and [release history](https://github.com/react/react/releases) before selecting a target.
 
+For source-level migration work, continue with [code preparation and examples](react-19.3-code-preparation.md). This release summary identifies the changes; that guide explains how to inspect and adapt an application's own code.
+
 19.3 stabilizes View Transitions and Fragment refs, adds `browser()`, supports Trusted Types and permits rendering client-defined Context from Server Components. It also fixes concurrent rendering, forms, hydration and development-refresh cases. Read the full [release announcement](https://react.dev/blog/2026/09/09/react-19-3) and [changelog](https://github.com/react/react/releases/tag/v19.3.0) for affected behavior. Frameworks with a bundled renderer may already have some changes and lack others.
 
 ## View Transitions

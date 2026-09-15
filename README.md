@@ -1,8 +1,8 @@
 # React Upgrade Advisor
 
-An agent skill for deciding whether to upgrade React and carrying out the migration with evidence from the actual application.
+An agent skill for upgrading React and preparing an application's source code using version-specific documentation and examples.
 
-It checks the distinction between the React you declare, the version your dependencies resolve, and the renderer your framework serves. It then guides the agent through version selection, focused changes, regression checks and rollback.
+It guides the agent through version selection, source review, justified code adaptations, regression checks and rollback. An optional inspector distinguishes the React you declare, the version your dependencies resolve, and the renderer your framework serves.
 
 ## Install
 
@@ -22,10 +22,13 @@ The Skills CLI has its own Node requirement: version 1.5.26, used for installati
 
 > Use react-upgrade-advisor to upgrade this app to the compatible stable React release. Preserve the current package manager and verify our main flows.
 
+> Prepare this codebase for React 19.3 using its documentation. Identify the files that need changes, adapt useful patterns within scope, and explain which existing patterns should stay.
+
 > Our editor broke after a React update. Compare the previous and current runtime and dependency graph, then isolate the regression.
 
 ## What makes it useful
 
+- **Version-specific code guidance:** React 19.3 documentation, a file-level preparation workflow, and typed examples for browser-only content, ViewTransition and Fragment refs.
 - **Framework-aware:** distinguishes Next App Router's bundled React from the application's installed version; checks hybrid App/Pages projects.
 - **Consumer-aware:** catches React/DOM mismatches and inspects the `react-is` that Recharts actually resolves.
 - **Workspace-aware:** identifies package-manager and lockfile signals, hoisted dependencies, pnpm package symlinks, PnP limitations and conflicts.
@@ -46,6 +49,18 @@ node skills/react-upgrade-advisor/scripts/inspect-react.mjs /path/to/app --targe
 It reads metadata only. It does not execute the inspected project's scripts, import package entrypoints, install dependencies, use the network or write files. Exit 0 means inspection completed; it is not an upgrade approval. Reports stay on stdout and can contain private package names, so review them before sharing.
 
 The instructions include a dated React 19.3 assessment and require fresh release research before choosing a version. The public skill is not pinned to upgrading every project to 19.3 forever.
+
+## What the repository files are
+
+| Path | Purpose |
+| --- | --- |
+| `skills/react-upgrade-advisor/SKILL.md` | Instructions the agent follows to upgrade and prepare the user's code. |
+| `skills/react-upgrade-advisor/references/` | Version-specific documentation, code examples, compatibility, migration and verification guides. |
+| `skills/react-upgrade-advisor/scripts/` | Optional offline metadata inspector; it does not upload the inspected project. |
+| `tests/` | Synthetic projects created in temporary folders to test the inspector, plus packaging checks and evaluation scenarios. |
+| `.github/workflows/` | CI that runs this repository's tests. |
+
+The test projects contain invented manifests and package metadata, not source code or customer data from an application. The skill runs against the user's own project locally; using it does not publish that project to this repository. The installed skill folder includes its helper and references; repository tests and CI are development support files.
 
 ## Validate changes
 

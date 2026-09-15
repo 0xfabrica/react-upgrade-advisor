@@ -1,10 +1,10 @@
 ---
 name: react-upgrade-advisor
-description: Assess and perform React web upgrades with runtime-aware compatibility checks, package-manager-specific commands, and regression evidence. Use when deciding whether to upgrade React, planning a React 19 migration, investigating an upgrade regression, or adopting a newly released React API. Covers Next.js App/Pages Router, Vite, workspaces and consumer peers; routes Expo/React Native to their framework's upgrade process.
+description: Upgrade React web applications and prepare their source code using version-specific documentation, migration examples, framework compatibility checks and regression evidence. Use when evaluating a React upgrade, preparing code for React 19.3, migrating across React majors, investigating an upgrade regression or adopting a new React API. Covers Next.js App/Pages Router, Vite and workspaces; routes Expo/React Native to their framework's upgrade process.
 license: MIT
 metadata:
   author: 0xfabrica
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # React Upgrade Advisor
@@ -56,6 +56,12 @@ Assess:
 Recommend **upgrade**, **prepare first**, or **wait**, with the specific reason and the evidence that would change it. Unknown compatibility is not a passing result. Avoid invented benefit percentages or a numeric “safety score”.
 
 For React 19.3, [react-19.3.md](references/react-19.3.md) maps the release to practical opportunities and adoption traps. For an upgrade across major versions, read the target's official migration guide before using codemods; the 19.3 feature note does not cover an 18-to-19 migration.
+
+## Prepare the application's code
+
+When the request includes preparing or adapting source code, read [the React 19.3 code-preparation guide](references/react-19.3-code-preparation.md). It includes a source review, versioned API examples, before/after patterns and acceptance criteria. The inspector is an optional inventory helper; it does not perform this review for the agent.
+
+Produce a file-level map of required compatibility changes, useful adaptations within the requested scope, and patterns to preserve. For each proposed edit, connect the current code to the target version's documentation and a testable result. Apply justified edits and verify them when implementation is requested. Do not finish at a dependency bump if source preparation was part of the task. Conversely, if a minor upgrade needs no source changes, explain which patterns were checked and why they remain valid rather than inventing a rewrite.
 
 ## Apply the smallest coherent migration
 
