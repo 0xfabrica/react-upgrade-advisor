@@ -1,6 +1,6 @@
 # Publishing this skill
 
-The release candidate is a standalone repository containing only the public skill, tests, documentation and license. The intended GitHub source is `0xfabrica/react-upgrade-advisor`; publishing it does not require exposing the application repository from which the original workflow was developed.
+The public source is [0xfabrica/react-upgrade-advisor](https://github.com/0xfabrica/react-upgrade-advisor). This standalone repository contains only the public skill, tests, documentation and license, with its own history.
 
 ## Before the first public push
 

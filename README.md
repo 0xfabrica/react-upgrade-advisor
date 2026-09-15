@@ -6,7 +6,7 @@ It checks the distinction between the React you declare, the version your depend
 
 ## Install
 
-Once this repository is public on GitHub:
+Install with the Skills CLI:
 
 ```sh
 npx skills add 0xfabrica/react-upgrade-advisor --skill react-upgrade-advisor
